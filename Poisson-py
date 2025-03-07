@@ -1,0 +1,34 @@
+from scipy.stats import poisson
+
+# Primero tenemos que importar la función poisson de la biblioteca scipy.stats para calcular las probabilidades.
+# Probabilidad de cometer 4 errores en 10 mil líneas de código
+# Asumimos una tasa promedio de errores por línea de código
+# (por ejemplo, 0.0005 errores por línea).
+tasa_errores_por_linea = 0.0005
+num_lineas = 10000
+num_errores = 4
+
+# Calcular la tasa promedio de errores en 10 mil líneas de código
+tasa_promedio_errores = tasa_errores_por_linea * num_lineas
+
+# Calcular la probabilidad usando la Distribución Poisson
+probabilidad_4_errores = poisson.pmf(num_errores, tasa_promedio_errores)
+print(f"La probabilidad de cometer exactamente {num_errores} errores en {num_lineas} líneas de código es: {probabilidad_4_errores:.4f}")
+
+# Probabilidad de encontrar a lo sumo 5 errores en 100 líneas de código
+num_lineas = 100
+num_errores_maximos = 5
+
+# Calcular la tasa promedio de errores en 100 líneas de código
+tasa_promedio_errores = tasa_errores_por_linea * num_lineas
+
+# Calcular la probabilidad acumulada usando la Distribución Poisson
+probabilidad_a_losumo_5_errores = poisson.cdf(num_errores_maximos, tasa_promedio_errores)
+print(f"La probabilidad de encontrar a lo sumo {num_errores_maximos} errores en {num_lineas} líneas de código es: {probabilidad_a_losumo_5_errores:.4f}")
+
+# Probabilidad de encontrar cuando mucho 3 errores en 100 líneas de código
+num_errores_maximos = 3
+
+# Calcular la probabilidad acumulada usando la Distribución Poisson
+probabilidad_cuando_mucho_3_errores = poisson.cdf(num_errores_maximos, tasa_promedio_errores)
+print(f"La probabilidad de encontrar cuando mucho {num_errores_maximos} errores en {num_lineas} líneas de código es: {probabilidad_cuando_mucho_3_errores:.4f}")
