@@ -1,0 +1,27 @@
+from scipy.stats import binom
+
+def probabilidad_binomial(n, k, p):
+    """
+    Calcula la probabilidad de obtener exactamente k éxitos en n lanzamientos
+    usando la distribución binomial.
+
+    Parámetros:
+    n -- número de lamzamientos
+    k -- número de éxitos deseados
+    p -- probabilidad de éxito en cada lanzamientos
+
+    Devuelve:
+    La probabilidad de obtener exactamente k éxitos en n lanzamientos
+    """
+    # Calcular la probabilidad utilizando la distribución binomial
+    probabilidad = binom.pmf(k, n, p)
+    
+    return probabilidad
+
+# Ejemplo de uso
+n = 10   # número de lanzamientos
+k = 3    # número de éxitos deseados
+p = 0.5  # probabilidad de éxito en cada lanzamientos
+
+resultado = probabilidad_binomial(n, k, p)
+print(f"La probabilidad de obtener exactamente {k} éxitos en {n} lanzamientos es: {resultado:.4f}")
