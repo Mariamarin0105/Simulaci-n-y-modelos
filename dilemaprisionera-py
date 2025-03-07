@@ -1,0 +1,29 @@
+def dilema_del_prisionero(eleccion_prisionero1, eleccion_prisionero2):
+    """
+    Determina el resultado del dilema del prisionero basado en las elecciones de ambos prisioneros.
+    
+    Parámetros:
+    eleccion_prisionero1 -- elección del primer prisionero ('cooperar' o 'traicionar')
+    eleccion_prisionero2 -- elección del segundo prisionero ('cooperar' o 'traicionar')
+    
+    Devuelve:
+    El resultado en términos de años de prisión para cada prisionero.
+    """
+    
+    if eleccion_prisionero1 == 'traicionar' and eleccion_prisionero2 == 'traicionar':
+        return (5, 5)
+    elif eleccion_prisionero1 == 'traicionar' and eleccion_prisionero2 == 'cooperar':
+        return (0, 10)
+    elif eleccion_prisionero1 == 'cooperar' and eleccion_prisionero2 == 'traicionar':
+        return (10, 0)
+    elif eleccion_prisionero1 == 'cooperar' and eleccion_prisionero2 == 'cooperar':
+        return (1, 1)
+    else:
+        return ("Elección inválida", "Elección inválida")
+
+# Ejemplo de uso
+eleccion_prisionero1 = 'cooperar'  # Puede ser 'cooperar' o 'traicionar'
+eleccion_prisionero2 = 'traicionar'  # Puede ser 'cooperar' o 'traicionar'
+
+resultado = dilema_del_prisionero(eleccion_prisionero1, eleccion_prisionero2)
+print(f"Resultado: Prisionero 1: {resultado[0]} años de prisión, Prisionero 2: {resultado[1]} años de prisión")
