@@ -1,0 +1,30 @@
+from math import comb
+
+def probabilidad_bernoulli(n, k, p):
+    """
+    Calcula la probabilidad de obtener exactamente k éxitos en n lanzamientos 
+    usando el método de Bernoulli (distribución binomial).
+
+    Parámetros:
+    n -- número de veces que fue lanzanda la moneda
+    k -- número de éxitos deseados
+    p -- probabilidad de éxito en cada lanzamiento
+
+    Devuelve:
+    La probabilidad de obtener exactamente k éxitos en n lanzamientos
+    """
+    # Calcula el coeficiente binomial (n sobre k)
+    coef_binomial = comb(n, k)
+    
+    # Calcula la probabilidad utilizando la fórmula de la distribución binomial
+    probabilidad = coef_binomial * (p * k) * ((1 - p) * (n - k))
+    
+    return probabilidad
+
+# Ejemplo de uso
+n = 10   # número de lanzamientos
+k = 4    # número de éxitos deseados
+p = 0.5  # probabilidad de éxito en cada lanzamiento
+
+resultado = probabilidad_bernoulli(n, k, p)
+print(f"La probabilidad de obtener exactamente {k} éxitos en {n} lanzamientos es: {resultado}")
