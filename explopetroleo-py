@@ -1,0 +1,49 @@
+import random
+
+def main():
+    costo_exploracion = 1_000_000  # Costo de cada exploración
+    prob_exito = 0.4  # Probabilidad de encontrar petróleo
+    barriles_encontrados = 300_000  # Barriles encontrados si hay éxito
+    precio_barril = 150  # Precio de venta por barril
+    porcentaje_estado = 0.4  # 40% para el estado
+    porcentaje_empresa = 0.6  # 60% para la empresa
+
+    # Simulación de 1,000,000 de exploraciones
+    num_exploraciones = 1_000_000
+    ganancias_totales = 0
+
+    for _ in range(num_exploraciones):
+        # Determinar si hay éxito o fracaso
+        if random.random() < prob_exito:
+            # Calcular ganancias si hay éxito
+            ganancia_bruta = barriles_encontrados * precio_barril
+            ganancia_empresa = ganancia_bruta * porcentaje_empresa
+            ganancia_neta = ganancia_empresa - costo_exploracion
+        else:
+            # Pérdida si no hay éxito
+            ganancia_neta = -costo_exploracion
+        
+        # Acumular ganancias/pérdidas
+        ganancias_totales += ganancia_neta
+
+    # Calcular la ganancia/pérdida promedio por exploración
+    ganancia_promedio = ganancias_totales / num_exploraciones
+
+    # Resultados
+    print(f"Ganancia/Pérdida total después de {num_exploraciones} exploraciones: ${ganancias_totales:,.2f}")
+    print(f"Ganancia/Pérdida promedio por exploración: ${ganancia_promedio:,.2f}")
+
+    # Determinar si la exploración es rentable
+    if ganancia_promedio > 0:
+        print("La exploración petrolera es rentable para la empresa.")
+    else:
+        print("La exploración petrolera no es rentable para la empresa.")
+
+    # Cálculo del umbral de éxito analítico
+    umbral_ganancia_empresa = (costo_exploracion * (1 - prob_exito)) / prob_exito
+    umbral_barriles = umbral_ganancia_empresa / (precio_barril * porcentaje_empresa)
+
+    print(f"\nUmbral de éxito (ganancia mínima requerida por la empresa): ${umbral_ganancia_empresa:,.2f}")
+    print(f"Umbral de éxito (barriles mínimos requeridos): {umbral_barriles:,.2f} barriles")
+
+main()
